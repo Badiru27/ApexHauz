@@ -1,0 +1,23 @@
+{
+  "name": "apexhauz",
+  "version": "1.0.0",
+  "description": "SideHustle Capstone project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Badiru27/ApexHauz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Badiru27/ApexHauz/issues"
+  },
+  "homepage": "https://github.com/Badiru27/ApexHauz#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "msql": "^1.0.3"
+  }
+}
