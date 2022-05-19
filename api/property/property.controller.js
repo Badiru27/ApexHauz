@@ -1,5 +1,5 @@
 
-const { create, update, deleteProp, getProp} = require('./property.service')
+const { create, update, deleteProp, getProp, getPropById } = require('./property.service')
  
 module.exports = {
     createProperty: (req, res)=> {
@@ -74,7 +74,28 @@ module.exports = {
             }) 
         })
     },
+    getPropertyById: (req, res) => {
+        const id = req.params.id
+        getPropById(id, (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    status: 'error',
+                    message: 'Server error'
+                })
+            }
+            if (!results) {
+              return  res.json({
+                    status: 'Failed',
+                    message:'Property not found'
+                })
+            }
+            return res.status(200).json({
+                status: 'success',
+                data: results
 
+            }) 
+        })
+    }
 
 }
 

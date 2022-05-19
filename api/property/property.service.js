@@ -1,6 +1,6 @@
 const pool = require('../../config/database')
 
-module.exports = {
+module.exports ={
     create: (data, callBack) => {
         pool.query(
             `insert into property(owner, status, price, state, city, address, type, image_url) 
@@ -20,7 +20,7 @@ module.exports = {
                 if (error) {
                     return callBack(error)
                 }
-                return callBack(null, result)
+              return callBack(null, result)  
             }
         )
     },
@@ -40,12 +40,12 @@ module.exports = {
             ],
             (error, result, field) => {
                 if (error) {
-                    return callBack(error)
+                  return callBack(error)
                 }
-
+                
                 return callBack(null, result)
-            }
-        )
+          }  
+      )  
     },
 
     deleteProp: (id, callBack) => {
@@ -70,8 +70,19 @@ module.exports = {
                     return callBack(error)
                 }
                 return callBack(null, result)
-            }
+            } 
         )
     },
- 
+    getPropById: (id, callBack) => {
+        pool.query(
+            `select * from property where id=?`,
+            [id],
+            (error, result, field) => {
+                if (error) {
+                    return callBack(error)
+                }
+                return callBack(null, result[0])
+            } 
+        )
+    }
 }
