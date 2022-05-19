@@ -16,12 +16,12 @@ module.exports = {
             if (err) {
                 console.log(err)
                 return res.status(500).json({
-                    success: 0,
+                    status: 'error',
                     message: 'Server error'
                 })
             }
             return res.status(200).json({
-                success: 1,
+                status: 'success',
                 data: result
             })
         })
@@ -35,7 +35,7 @@ module.exports = {
             }
             if (!results) {
                 return res.json({
-                    success: 0,
+                    status: 'error',
                     message: 'Invalid credentials'
                 })
             }
@@ -48,13 +48,13 @@ module.exports = {
                 })
 
                 return res.json({
-                    success: 1,
+                    status: 'success',
                     token: jsonToken,
-                    message: 'Login successfully'
+                    data: results
                 })
             } else {
                 return res.json({
-                    success: 0,
+                    status: 'error',
                     message: 'Invalid credentials'
                 })
             }
