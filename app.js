@@ -1,10 +1,11 @@
 const express = require('express')
 require('dotenv').config()
 const app = express()
-const userRouter = require('./api/users/user.router')
+
+const routes = require('./routes')
 
 app.use(express.json())
 
-app.use('/api/user', userRouter)
+app.use('/api/v1', routes)
     
 app.listen(process.env.APP_PORT)
