@@ -1,8 +1,8 @@
 
-const { create, update } = require('./property.service')
+const { create, update, deleteProp } = require('./property.service')
 
 module.exports = {
-    createProperty: (req, res) => {
+    createProperty: (req, res)=> {
         const body = req.body
 
         create(body, (err, results) => {
@@ -21,7 +21,7 @@ module.exports = {
         })
     },
 
-    updateProperty: (req, res) => {
+    updateProperty:(req, res)=> {
         const body = req.body
         const id = req.params.id
         update(id, body, (err, results) => {
@@ -38,5 +38,25 @@ module.exports = {
                 data: results
             })
         })
+    },
+
+    deleteProperty:(req, res) =>{
+        const id = req.params.id
+        deleteProp(id, (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    status: 'error',
+                    message: 'Server error'
+                })
+            }
+
+            return res.status(200).json({
+                status: 'success',
+                massage: 'Deleted successfully',
+
+            })
+        })
     }
+
 }
+

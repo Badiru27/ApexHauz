@@ -46,5 +46,18 @@ module.exports ={
                 return callBack(null, result)
           }  
       )  
+    },
+
+    deleteProp: (id, callBack) => {
+        pool.query(
+            `delete from property where id=?`,
+            [id],
+            (error, result, field) => {
+                if (error) {
+                    return callBack(error)
+                }
+                return callBack(null, result)
+            }
+        )
     }
 }
